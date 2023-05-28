@@ -4,7 +4,7 @@ const apiRoutes = require('./api');
 router.use('/api', apiRoutes);
 
 router.use((req, res) => {
-    return res.semd('Wrong route!');
+    return res.send('Wrong route!');
 });
 
-model.exports = router;
+module.exports = router;
