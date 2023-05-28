@@ -7,9 +7,9 @@ module.exports = {
       .then((thoughts) => res.json(thoughts))
       .catch((err) => res.status(500).json(err));
   },
-  //GET thought by _id
+  //GET thought by id
   getThoughtById(req, res) {
-    Thought.findById(req.params.id)
+    Thought.findById(req.params.thoughtId)
       .then((thought) => res.json(thought))
       .catch((err) => res.status(500).json(err));
   },
@@ -35,7 +35,7 @@ module.exports = {
   //PUT/UPDATE a thought by _id
   updateThought(req, res) {
     Thought.findByIdAndUpdate(
-      { _id: req.params.id },
+      { _id: req.params.thoughtId },
       { $set: req.body },
       { runValidators: true, new: true }
     )
@@ -45,7 +45,7 @@ module.exports = {
   //DELETE a thought by _id
   deleteThought(req, res) {
     Thought.findByIdAndDelete(
-      { _id: req.params.id },
+      { _id: req.params.thoughtId },
       { runValidators: true, new: true }
     )
       .then((thought) => res.json(thought))
